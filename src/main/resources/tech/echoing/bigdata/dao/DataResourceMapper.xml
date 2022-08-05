@@ -20,4 +20,46 @@
         INSERT INTO dqc_data_resource(resource_id, resource_name, db_type, db_name, db_host, remark)
         VALUES(#{resourceId}, #{resourceName}, #{resourceName}, #{resourceName}, #{resourceName}, #{resourceName})
     </insert>
+
+    <update id="update" parameterType="tech.echoing.bigdata.bean.DataResource">
+        UPDATE dqc_data_resource
+        <set>
+            <if test="resourceName != null">
+                resource_name = #{resourceName,jdbcType=VARCHAR},
+            </if>
+            <if test="dbType != null">
+                db_type = #{dbType,jdbcType=VARCHAR},
+            </if>
+            <if test="dbName != null">
+                db_name = #{dbName,jdbcType=VARCHAR},
+            </if>
+            <if test="dbHost != null">
+                db_host = #{dbHost,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where resource_id = #{resourceId,jdbcType=VARCHAR}
+    </update>
+
+    <sql id="Base_Column_List">
+        resource_id, resource_name, db_type, db_name, db_host, remark, create_time, update_time
+    </sql>
+    <select id="select" resultMap="BaseResultMap" parameterType="tech.echoing.bigdata.bean.DataResource">
+        select
+        <include refid="Base_Column_List"/>
+        from dqc_data_resource
+        <if test="resourceName != null">
+            and resource_name = #{resourceName,jdbcType=VARCHAR}
+        </if>
+        <if test="dbType != null">
+            and db_type = #{dbType,jdbcType=VARCHAR}
+        </if>
+        <if test="dbName != null">
+            and db_name = #{dbName,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+
 </mapper>

@@ -15,8 +15,8 @@ public class DataResourceServiceImpl implements DataResourceService {
     private DataResourceMapper mapper;
 
     @Override
-    public List<DataResource> getDataResourceList() {
-        return null;
+    public List<DataResource> getDataResourceList(DataResource dataResource) {
+        return mapper.select(dataResource);
     }
 
     @Override
@@ -25,7 +25,8 @@ public class DataResourceServiceImpl implements DataResourceService {
     }
 
     @Override
-    public boolean updateDataResource(DataResource dataResource) {
-        return false;
+    public void updateDataResource(DataResource dataResource) {
+        mapper.update(dataResource);
+
     }
 }
