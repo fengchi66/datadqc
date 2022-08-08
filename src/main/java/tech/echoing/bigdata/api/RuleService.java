@@ -13,5 +13,4 @@ public interface RuleService {
     boolean updateDqcRule(DqcRule dqcRule);
 
     boolean start(String group);
-
 }

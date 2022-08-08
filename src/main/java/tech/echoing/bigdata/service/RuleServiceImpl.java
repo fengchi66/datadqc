@@ -1,10 +1,12 @@
 package tech.echoing.bigdata.service;
 
+import org.springframework.stereotype.Service;
 import tech.echoing.bigdata.api.RuleService;
 import tech.echoing.bigdata.bean.DqcRule;
 
 import java.util.List;
 
+@Service
 public class RuleServiceImpl implements RuleService {
     @Override
     public List<DqcRule> getRuleList(DqcRule dqcRule) {

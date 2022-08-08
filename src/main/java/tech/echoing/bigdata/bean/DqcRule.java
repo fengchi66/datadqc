@@ -79,13 +79,10 @@ public class DqcRule {
     public String reportFeiShu;
 
     // 接收报告的飞书群列表
-    public String reportDingdingGroups;
+    public String reportFeiShuGroups;
 
     // remark
-    public String note;
-
-    // 是否删除 @N 未删除 @Y 已删除
-    public String isDel;
+    public String remark;
 
     // 创建时间
     public Date createTime;

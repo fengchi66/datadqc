@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tech.echoing.bigdata.dao.DqcRuleMapper">
+    <resultMap id="BaseResultMap" type="tech.echoing.bigdata.bean.DqcRule">
+        <result column="rule_id" property="ruleId" jdbcType="VARCHAR"/>
+        <result column="rule_name" property="ruleName" jdbcType="VARCHAR"/>
+        <result column="rule_group" property="ruleGroup" jdbcType="VARCHAR"/>
+        <result column="rule_type" property="ruleType" jdbcType="VARCHAR"/>
+        <result column="sys_rule_enm" property="sysRuleEnum" jdbcType="VARCHAR"/>
+        <result column="resource_id" property="resourceId" jdbcType="VARCHAR"/>
+        <result column="resource_name" property="resourceName" jdbcType="VARCHAR"/>
+        <result column="resource_db_type" property="resourceDbType" jdbcType="VARCHAR"/>
+        <result column="resource_db_name" property="resourceDbName" jdbcType="VARCHAR"/>
+        <result column="resource_db_host" property="resourceDbHost" jdbcType="VARCHAR"/>
+        <result column="table_name" property="tableName" jdbcType="VARCHAR"/>
+        <result column="partition_expression" property="partitionExpression" jdbcType="VARCHAR"/>
+        <result column="column_name" property="columnName" jdbcType="VARCHAR"/>
+        <result column="compare_method" property="compareMethod" jdbcType="VARCHAR"/>
+        <result column="expect_value" property="expectValue" jdbcType="DOUBLE"/>
+        <result column="warn_value" property="warnValue" jdbcType="DOUBLE"/>
+        <result column="error_value" property="errorValue" jdbcType="DOUBLE"/>
+        <result column="receive_report_level" property="receiveReportLevel" jdbcType="VARCHAR"/>
+        <result column="check_sql" property="checkSql" jdbcType="VARCHAR"/>
+        <result column="result_sql" property="resultSql" jdbcType="VARCHAR"/>
+        <result column="report_emails" property="reportEmails" jdbcType="VARCHAR"/>
+        <result column="report_phones" property="reportPhones" jdbcType="VARCHAR"/>
+        <result column="report_fei_shu" property="reportFeiShu" jdbcType="VARCHAR"/>
+        <result column="report_fei_shu_groups" property="reportFeiShuGroups" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        a.id, a.rule_id, a.rule_name, a.rule_group, a.rule_type, a.sys_rule_enum, a.resource_id, a.table_name,
+        a.partition_expression, a.column_name, a.compare_method, a.expect_value, a.warn_value, a.error_value,
+        a.receive_report_level, a.check_sql, a.result_sql, a.report_emails, a.report_phones, a.report_fei_shu,
+        a.report_fei_shu_groups, a.remark, a.create_time, a.update_time,
+        b.resource_name,b.db_type resource_db_type,b.db_name resource_db_name,b.db_host resource_db_host
+    </sql>
+    <select id="select" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from dqc_rule a, dqc_data_resource b
+        where a.resource_id = b.resource_id
+        <if test="ruleName != null">
+            and a.rule_name = #{ruleName,jdbcType=VARCHAR}
+        </if>
+        <if test="ruleGroup != null">
+            and a.rule_group = #{ruleGroup,jdbcType=VARCHAR}
+        </if>
+        <if test="ruleType != null">
+            and a.rule_type = #{ruleType,jdbcType=VARCHAR}
+        </if>
+        <if test="sysRuleEnum != null">
+            and a.sys_rule_enum = #{sysRuleEnum,jdbcType=VARCHAR}
+        </if>
+        <if test="resourceId != null">
+            and a.resource_id = #{resourceId,jdbcType=VARCHAR}
+        </if>
+        <if test="tableName != null">
+            and a.table_name = #{tableName,jdbcType=VARCHAR}
+        </if>
+        <if test="columnName != null">
+            and a.column_name = #{columnName,jdbcType=VARCHAR}
+        </if>
+        <if test="receiveReportLevel != null">
+            and a.receive_report_level = #{receiveReportLevel,jdbcType=VARCHAR}
+        </if>
+        <if test="reportEmails != null">
+            and a.report_emails = #{reportEmails,jdbcType=VARCHAR}
+        </if>
+        <if test="reportPhones != null">
+            and a.report_phones = #{reportPhones,jdbcType=VARCHAR}
+        </if>
+        <if test="reportDingdings != null">
+            and a.report_dingdings = #{reportDingdings,jdbcType=VARCHAR}
+        </if>
+        <if test="reportDingdingGroups != null">
+            and a.report_dingding_groups = #{reportDingdingGroups,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="com.yit.datadqc.dao.dto.DqcRuleDTO">
+        insert into dqc_rule
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ruleId != null">
+                rule_id,
+            </if>
+            <if test="ruleName != null">
+                rule_name,
+            </if>
+            <if test="ruleGroup != null">
+                rule_group,
+            </if>
+            <if test="ruleType != null">
+                rule_type,
+            </if>
+            <if test="sysRuleEnum != null">
+                sys_rule_enum,
+            </if>
+            <if test="resourceId != null">
+                resource_id,
+            </if>
+            <if test="tableName != null">
+                table_name,
+            </if>
+            <if test="partitionExpression != null">
+                partition_expression,
+            </if>
+            <if test="columnName != null">
+                column_name,
+            </if>
+            <if test="compareMethod != null">
+                compare_method,
+            </if>
+            <if test="expectValue != null">
+                expect_value,
+            </if>
+            <if test="warnValue != null">
+                warn_value,
+            </if>
+            <if test="errorValue != null">
+                error_value,
+            </if>
+            <if test="receiveReportLevel != null">
+                receive_report_level,
+            </if>
+            <if test="checkSql != null">
+                check_sql,
+            </if>
+            <if test="resultSql != null">
+                result_sql,
+            </if>
+            <if test="reportEmails != null">
+                report_emails,
+            </if>
+            <if test="reportPhones != null">
+                report_phones,
+            </if>
+            <if test="reportDingdings != null">
+                report_dingdings,
+            </if>
+            <if test="reportDingdingGroups != null">
+                report_dingding_groups,
+            </if>
+            <if test="note != null">
+                note,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ruleId != null">
+                #{ruleId,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleName != null">
+                #{ruleName,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleGroup != null">
+                #{ruleGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleType != null">
+                #{ruleType,jdbcType=VARCHAR},
+            </if>
+            <if test="sysRuleEnum != null">
+                #{sysRuleEnum,jdbcType=VARCHAR},
+            </if>
+            <if test="resourceId != null">
+                #{resourceId,jdbcType=VARCHAR},
+            </if>
+            <if test="tableName != null">
+                #{tableName,jdbcType=VARCHAR},
+            </if>
+            <if test="partitionExpression != null">
+                #{partitionExpression,jdbcType=VARCHAR},
+            </if>
+            <if test="columnName != null">
+                #{columnName,jdbcType=VARCHAR},
+            </if>
+            <if test="compareMethod != null">
+                #{compareMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="expectValue != null">
+                #{expectValue,jdbcType=DOUBLE},
+            </if>
+            <if test="warnValue != null">
+                #{warnValue,jdbcType=DOUBLE},
+            </if>
+            <if test="errorValue != null">
+                #{errorValue,jdbcType=DOUBLE},
+            </if>
+            <if test="receiveReportLevel != null">
+                #{receiveReportLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="checkSql != null">
+                #{checkSql,jdbcType=VARCHAR},
+            </if>
+            <if test="resultSql != null">
+                #{resultSql,jdbcType=VARCHAR},
+            </if>
+            <if test="reportEmails != null">
+                #{reportEmails,jdbcType=VARCHAR},
+            </if>
+            <if test="reportPhones != null">
+                #{reportPhones,jdbcType=VARCHAR},
+            </if>
+            <if test="reportDingdings != null">
+                #{reportDingdings,jdbcType=VARCHAR},
+            </if>
+            <if test="reportDingdingGroups != null">
+                #{reportDingdingGroups,jdbcType=VARCHAR},
+            </if>
+            <if test="note != null">
+                #{note,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.yit.datadqc.dao.dto.DqcRuleDTO">
+        update dqc_rule
+        <set>
+            <if test="ruleName != null">
+                rule_name = #{ruleName,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleGroup != null">
+                rule_group = #{ruleGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleType != null">
+                rule_type = #{ruleType,jdbcType=VARCHAR},
+            </if>
+            <if test="sysRuleEnum != null">
+                sys_rule_enum = #{sysRuleEnum,jdbcType=VARCHAR},
+            </if>
+            <if test="resourceId != null">
+                resource_id = #{resourceId,jdbcType=VARCHAR},
+            </if>
+            <if test="tableName != null">
+                table_name = #{tableName,jdbcType=VARCHAR},
+            </if>
+            <if test="partitionExpression != null">
+                partition_expression = #{partitionExpression,jdbcType=VARCHAR},
+            </if>
+            <if test="columnName != null">
+                column_name = #{columnName,jdbcType=VARCHAR},
+            </if>
+            <if test="compareMethod != null">
+                compare_method = #{compareMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="expectValue != null">
+                expect_value = #{expectValue,jdbcType=DOUBLE},
+            </if>
+            <if test="warnValue != null">
+                warn_value = #{warnValue,jdbcType=DOUBLE},
+            </if>
+            <if test="errorValue != null">
+                error_value = #{errorValue,jdbcType=DOUBLE},
+            </if>
+            <if test="receiveReportLevel != null">
+                receive_report_level = #{receiveReportLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="checkSql != null">
+                check_sql = #{checkSql,jdbcType=VARCHAR},
+            </if>
+            <if test="resultSql != null">
+                result_sql = #{resultSql,jdbcType=VARCHAR},
+            </if>
+            <if test="reportEmails != null">
+                report_emails = #{reportEmails,jdbcType=VARCHAR},
+            </if>
+            <if test="reportPhones != null">
+                report_phones = #{reportPhones,jdbcType=VARCHAR},
+            </if>
+            <if test="reportDingdings != null">
+                report_dingdings = #{reportDingdings,jdbcType=VARCHAR},
+            </if>
+            <if test="reportDingdingGroups != null">
+                report_dingding_groups = #{reportDingdingGroups,jdbcType=VARCHAR},
+            </if>
+            <if test="note != null">
+                note = #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="isDel != null">
+                is_del = #{isDel,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where rule_id = #{ruleId,jdbcType=VARCHAR}
+    </update>
+
+</mapper>
