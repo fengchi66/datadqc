@@ -25,7 +25,6 @@ public class UserController {
         return userService.selectAllUser();
     }
 
-
     @RequestMapping("/changemoney")
     public List<User> testchangemoney() {
         userService.changemoney();
@@ -37,5 +36,4 @@ public class UserController {
         userService.deleteService(3);
         return "OK";
     }
-
 }

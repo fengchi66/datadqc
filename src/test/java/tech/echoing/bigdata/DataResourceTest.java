@@ -47,8 +47,6 @@ public class DataResourceTest {
 
         List<DataResource> dataResourceList = impl.getDataResourceList(null);
         System.out.println(dataResourceList);
-
-
     }
 
 }
