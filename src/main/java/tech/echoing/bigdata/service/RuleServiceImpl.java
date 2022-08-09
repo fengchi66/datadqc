@@ -1,30 +1,40 @@
 package tech.echoing.bigdata.service;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.echoing.bigdata.api.RuleService;
 import tech.echoing.bigdata.bean.DqcRule;
+import tech.echoing.bigdata.dao.DqcRuleMapper;
 
 import java.util.List;
 
 @Service
 public class RuleServiceImpl implements RuleService {
+
+    @Autowired
+    private DqcRuleMapper mapper;
+
     @Override
     public List<DqcRule> getRuleList(DqcRule dqcRule) {
-        return null;
+        return mapper.select(dqcRule);
     }
 
     @Override
-    public boolean insertDqcRule(DqcRule dqcRule) {
-        return false;
+    public DqcRule insertDqcRule(DqcRule dqcRule) {
+        mapper.insert(dqcRule);
+        return dqcRule;
     }
 
     @Override
-    public boolean updateDqcRule(DqcRule dqcRule) {
-        return false;
+    public DqcRule updateDqcRule(DqcRule dqcRule) {
+        mapper.update(dqcRule);
+        System.out.println(dqcRule);
+        return dqcRule;
     }
 
     @Override
-    public boolean start(String group) {
-        return false;
+    public void start(String group) {
+
     }
 }

@@ -24,10 +24,12 @@ public class DataResourceTest {
     public void dataResourceInsertTest() {
 
         DataResource resource = new DataResource();
-        resource.setResourceId("R003");
-        resource.setResourceName("ssff");
-        resource.setDbHost("localhost");
-        resource.setRemark("测试ass");
+        resource.setResourceId("R001");
+        resource.setResourceName("实时dwd");
+        resource.setDbHost("10.20.180.2:9030");
+        resource.setDbName("dwd");
+        resource.setDbType("starrocks");
+        resource.setRemark("olap分析dwd");
 
         impl.insertDataResource(resource);
     }

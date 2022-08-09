@@ -31,7 +31,7 @@
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <sql id="Base_Column_List">
-        a.id, a.rule_id, a.rule_name, a.rule_group, a.rule_type, a.sys_rule_enum, a.resource_id, a.table_name,
+        a.rule_id, a.rule_name, a.rule_group, a.rule_type, a.sys_rule_enm, a.resource_id, a.table_name,
         a.partition_expression, a.column_name, a.compare_method, a.expect_value, a.warn_value, a.error_value,
         a.receive_report_level, a.check_sql, a.result_sql, a.report_emails, a.report_phones, a.report_fei_shu,
         a.report_fei_shu_groups, a.remark, a.create_time, a.update_time,
@@ -52,7 +52,7 @@
             and a.rule_type = #{ruleType,jdbcType=VARCHAR}
         </if>
         <if test="sysRuleEnum != null">
-            and a.sys_rule_enum = #{sysRuleEnum,jdbcType=VARCHAR}
+            and a.sys_rule_enm #{sysRuleEnum,jdbcType=VARCHAR}
         </if>
         <if test="resourceId != null">
             and a.resource_id = #{resourceId,jdbcType=VARCHAR}
@@ -72,15 +72,15 @@
         <if test="reportPhones != null">
             and a.report_phones = #{reportPhones,jdbcType=VARCHAR}
         </if>
-        <if test="reportDingdings != null">
-            and a.report_dingdings = #{reportDingdings,jdbcType=VARCHAR}
+        <if test="reportFeiShu != null">
+            and a.report_fei_shu = #{reportFeiShu,jdbcType=VARCHAR}
         </if>
-        <if test="reportDingdingGroups != null">
-            and a.report_dingding_groups = #{reportDingdingGroups,jdbcType=VARCHAR}
+        <if test="reportFeiShuGroups != null">
+            and a.report_fei_shu_groups = #{reportFeiShuGroups,jdbcType=VARCHAR}
         </if>
     </select>
 
-    <insert id="insert" parameterType="com.yit.datadqc.dao.dto.DqcRuleDTO">
+    <insert id="insert" parameterType="tech.echoing.bigdata.bean.DqcRule">
         insert into dqc_rule
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="ruleId != null">
@@ -96,7 +96,7 @@
                 rule_type,
             </if>
             <if test="sysRuleEnum != null">
-                sys_rule_enum,
+                sys_rule_enm,
             </if>
             <if test="resourceId != null">
                 resource_id,
@@ -137,14 +137,14 @@
             <if test="reportPhones != null">
                 report_phones,
             </if>
-            <if test="reportDingdings != null">
-                report_dingdings,
+            <if test="reportFeiShu != null">
+                report_fei_shu,
             </if>
-            <if test="reportDingdingGroups != null">
-                report_dingding_groups,
+            <if test="reportFeiShuGroups != null">
+                report_fei_shu_groups,
             </if>
-            <if test="note != null">
-                note,
+            <if test="remark != null">
+                remark,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -202,18 +202,18 @@
             <if test="reportPhones != null">
                 #{reportPhones,jdbcType=VARCHAR},
             </if>
-            <if test="reportDingdings != null">
-                #{reportDingdings,jdbcType=VARCHAR},
+            <if test="reportFeiShu != null">
+                #{reportFeiShu,jdbcType=VARCHAR},
             </if>
-            <if test="reportDingdingGroups != null">
-                #{reportDingdingGroups,jdbcType=VARCHAR},
+            <if test="reportFeiShuGroups != null">
+                #{reportFeiShuGroups,jdbcType=VARCHAR},
             </if>
-            <if test="note != null">
-                #{note,jdbcType=VARCHAR},
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
-    <update id="update" parameterType="com.yit.datadqc.dao.dto.DqcRuleDTO">
+    <update id="update" parameterType="tech.echoing.bigdata.bean.DqcRule">
         update dqc_rule
         <set>
             <if test="ruleName != null">
@@ -226,7 +226,7 @@
                 rule_type = #{ruleType,jdbcType=VARCHAR},
             </if>
             <if test="sysRuleEnum != null">
-                sys_rule_enum = #{sysRuleEnum,jdbcType=VARCHAR},
+                sys_rule_enm = #{sysRuleEnum,jdbcType=VARCHAR},
             </if>
             <if test="resourceId != null">
                 resource_id = #{resourceId,jdbcType=VARCHAR},
@@ -267,17 +267,14 @@
             <if test="reportPhones != null">
                 report_phones = #{reportPhones,jdbcType=VARCHAR},
             </if>
-            <if test="reportDingdings != null">
-                report_dingdings = #{reportDingdings,jdbcType=VARCHAR},
+            <if test="reportFeiShu != null">
+                report_fei_shu = #{reportFeiShu,jdbcType=VARCHAR},
             </if>
-            <if test="reportDingdingGroups != null">
-                report_dingding_groups = #{reportDingdingGroups,jdbcType=VARCHAR},
+            <if test="reportFeiShuGroups != null">
+                report_fei_shu_groups = #{reportFeiShuGroups,jdbcType=VARCHAR},
             </if>
-            <if test="note != null">
-                note = #{note,jdbcType=VARCHAR},
-            </if>
-            <if test="isDel != null">
-                is_del = #{isDel,jdbcType=VARCHAR},
+            <if test="remark != null">
+                note = #{remark,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
                 create_time = #{createTime,jdbcType=TIMESTAMP},

@@ -8,9 +8,9 @@ public interface RuleService {
 
     List<DqcRule> getRuleList(DqcRule dqcRule);
 
-    boolean insertDqcRule(DqcRule dqcRule);
+    DqcRule insertDqcRule(DqcRule dqcRule);
 
-    boolean updateDqcRule(DqcRule dqcRule);
+    DqcRule updateDqcRule(DqcRule dqcRule);
 
-    boolean start(String group);
+    void start(String group);
 }

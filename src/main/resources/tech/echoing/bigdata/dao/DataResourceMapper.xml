@@ -18,7 +18,7 @@
 
     <insert id="insert" parameterType="tech.echoing.bigdata.bean.DataResource">
         INSERT INTO dqc_data_resource(resource_id, resource_name, db_type, db_name, db_host, remark)
-        VALUES(#{resourceId}, #{resourceName}, #{resourceName}, #{resourceName}, #{resourceName}, #{resourceName})
+        VALUES(#{resourceId}, #{resourceName}, #{dbType}, #{dbName}, #{dbHost}, #{remark})
     </insert>
 
     <update id="update" parameterType="tech.echoing.bigdata.bean.DataResource">
