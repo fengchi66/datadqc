@@ -1,6 +1,5 @@
 package tech.echoing.bigdata.service;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.echoing.bigdata.api.RuleService;
@@ -29,7 +28,6 @@ public class RuleServiceImpl implements RuleService {
     @Override
     public DqcRule updateDqcRule(DqcRule dqcRule) {
         mapper.update(dqcRule);
-        System.out.println(dqcRule);
         return dqcRule;
     }
 

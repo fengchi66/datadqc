@@ -35,11 +35,25 @@ public class DataResourceTest {
     }
 
     @Test
+    public void dataResourceInsertTest2() {
+
+        DataResource resource = new DataResource();
+        resource.setResourceId("R002");
+        resource.setResourceName("presto");
+        resource.setDbHost("10.20.221.242:9090");
+        resource.setDbName("hudi_ods");
+        resource.setDbType("presto");
+        resource.setRemark("hudi表");
+
+        impl.insertDataResource(resource);
+    }
+
+    @Test
     public void dataResourceUpdateTest() {
 
         DataResource resource = new DataResource();
-        resource.setResourceId("hadoop");
-        resource.setResourceName("flink");
+        resource.setResourceId("R001");
+        resource.setDbType("mysql");
 
         impl.updateDataResource(resource);
     }

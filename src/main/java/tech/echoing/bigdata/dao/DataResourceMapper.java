@@ -14,4 +14,6 @@ public interface DataResourceMapper {
 
     List<DataResource> select(DataResource resource);
 
+    DataResource selectId(String resourceId);
+
 }

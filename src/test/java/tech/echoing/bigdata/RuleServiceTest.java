@@ -46,7 +46,6 @@ public class RuleServiceTest {
         dqcRule.setRemark("dd");
 
         impl.insertDqcRule(dqcRule);
-
     }
 
     @Test
@@ -57,10 +56,13 @@ public class RuleServiceTest {
         dqcRule.setReportEmails("itwufc@163.com, joeyooa@126.com");
 
         impl.updateDqcRule(dqcRule);
+
     }
 
     @Test
     public void selectRuleTest() {
+
+//        Mysql mysql = new Mysql("");
 
         DqcRule dqcRule = new DqcRule();
         dqcRule.setResourceId("R001");
@@ -69,5 +71,4 @@ public class RuleServiceTest {
 
         System.out.println(ruleList);
     }
-
 }
