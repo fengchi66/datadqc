@@ -28,7 +28,4 @@ public class DataResourceServiceImpl implements DataResourceService {
     public void updateDataResource(DataResource dataResource) {
         mapper.update(dataResource);
     }
-
-
-
 }

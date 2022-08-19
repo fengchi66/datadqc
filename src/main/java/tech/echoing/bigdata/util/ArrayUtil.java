@@ -31,7 +31,6 @@ public class ArrayUtil {
         return flag;
     }
 
-
     /**
      * toString --> [1,2,3,4]
      *
@@ -58,5 +57,4 @@ public class ArrayUtil {
             b.append(",");
         }
     }
-
 }

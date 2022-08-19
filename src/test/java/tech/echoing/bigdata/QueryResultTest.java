@@ -45,7 +45,6 @@ public class QueryResultTest {
         ReportResult reportResult = mysqlDataSource.queryForReportResult("SELECT * FROM dwd_access_log");
 
         System.out.println(reportResult);
-
     }
 
     @Test
@@ -57,7 +56,7 @@ public class QueryResultTest {
 
         PrestoDataSource prestoDataSource = new PrestoDataSource(dataResource);
 
-        Double aDouble = prestoDataSource.queryForSingleDoubleValue("SELECT COUNT(1) FROM ods_category");
+        Double aDouble = prestoDataSource.queryForSingleDoubleValue("SELECT COUNT(1) FROM ods_spu");
 
         System.out.println(aDouble);
     }
@@ -70,7 +69,6 @@ public class QueryResultTest {
 
         PrestoDataSource prestoDataSource = new PrestoDataSource(dataResource);
 
-        System.out.println(prestoDataSource.queryForReportResult("SELECT * FROM ods_category limit 10"));
+        System.out.println(prestoDataSource.queryForReportResult("SELECT * FROM ods_category LIMIT 10"));
     }
-
 }
