@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    username: user_dev
+    password: MysqlDev2020^ddd1dad
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-uf66387h69xbq0heq.mysql.rds.aliyuncs.com:3306/datadqc?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+
+server:
+  port: 8888
+
+management:
+  metrics:
+    enable:
+      all: false
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      label-1-name: hello
+      label-2-name: world
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: ["prometheus","health"]

@@ -21,7 +21,6 @@ public class QueryResultTest {
     @Autowired
     private DataResourceServiceImpl impl;
 
-
     @Test
     public void mysqlSql() {
         DataResource dataResource = new DataResource();
