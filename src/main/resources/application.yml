@@ -6,7 +6,7 @@ spring:
     url: jdbc:mysql://rm-uf66387h69xbq0heq.mysql.rds.aliyuncs.com:3306/datadqc?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
 
 server:
-  port: 8888
+  port: 8080
 
 management:
   metrics:
@@ -26,4 +26,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: ["prometheus","health"]
+        include: [ "prometheus","health" ]
