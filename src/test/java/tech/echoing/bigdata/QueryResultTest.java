@@ -18,56 +18,59 @@ import tech.echoing.bigdata.service.DataResourceServiceImpl;
 @RunWith(SpringRunner.class)
 public class QueryResultTest {
 
-    @Autowired
-    private DataResourceServiceImpl impl;
+  @Autowired
+  private DataResourceServiceImpl impl;
 
-    @Test
-    public void mysqlSql() {
-        DataResource dataResource = new DataResource();
-        dataResource.setDbName("dwd");
-        dataResource.setDbHost("10.20.180.2:9030");
+  @Test
+  public void mysqlSql() {
+    DataResource dataResource = new DataResource();
+    dataResource.setDbName("dwd");
+    dataResource.setDbHost("10.20.180.2:9030");
 
-        MysqlDataSource mysqlDataSource = new MysqlDataSource(dataResource);
-        Double doubleValue = mysqlDataSource.queryForSingleDoubleValue("SELECT COUNT(1) FROM dwd_access_log");
+    MysqlDataSource mysqlDataSource = new MysqlDataSource(dataResource);
+    Double doubleValue = mysqlDataSource.queryForSingleDoubleValue(
+        "SELECT COUNT(1) FROM dwd_access_log");
 
-        System.out.println(doubleValue);
-    }
+    System.out.println(doubleValue);
+  }
 
-    @Test
-    public void mysqlSql2() {
-        DataResource dataResource = new DataResource();
-        dataResource.setDbName("dwd");
-        dataResource.setDbHost("10.20.180.2:9030");
+  @Test
+  public void mysqlSql2() {
+    DataResource dataResource = new DataResource();
+    dataResource.setDbName("dwd");
+    dataResource.setDbHost("10.20.180.2:9030");
 
-        MysqlDataSource mysqlDataSource = new MysqlDataSource(dataResource);
+    MysqlDataSource mysqlDataSource = new MysqlDataSource(dataResource);
 
-        ReportResult reportResult = mysqlDataSource.queryForReportResult("SELECT * FROM dwd_access_log");
+    ReportResult reportResult = mysqlDataSource.queryForReportResult(
+        "SELECT * FROM dwd_access_log");
 
-        System.out.println(reportResult);
-    }
+    System.out.println(reportResult);
+  }
 
-    @Test
-    public void prestoSql() {
+  @Test
+  public void prestoSql() {
 
-        DataResource dataResource = new DataResource();
-        dataResource.setDbName("hudi_ods");
-        dataResource.setDbHost("10.20.221.242:9090");
+    DataResource dataResource = new DataResource();
+    dataResource.setDbName("hudi_ods");
+    dataResource.setDbHost("10.20.221.242:9090");
 
-        PrestoDataSource prestoDataSource = new PrestoDataSource(dataResource);
+    PrestoDataSource prestoDataSource = new PrestoDataSource(dataResource);
 
-        Double aDouble = prestoDataSource.queryForSingleDoubleValue("SELECT COUNT(1) FROM ods_spu");
+    Double aDouble = prestoDataSource.queryForSingleDoubleValue("SELECT COUNT(1) FROM ods_spu");
 
-        System.out.println(aDouble);
-    }
+    System.out.println(aDouble);
+  }
 
-    @Test
-    public void prestoSql2() {
-        DataResource dataResource = new DataResource();
-        dataResource.setDbName("hudi_ods");
-        dataResource.setDbHost("10.20.221.242:9090");
+  @Test
+  public void prestoSql2() {
+    DataResource dataResource = new DataResource();
+    dataResource.setDbName("hudi_ods");
+    dataResource.setDbHost("10.20.221.242:9090");
 
-        PrestoDataSource prestoDataSource = new PrestoDataSource(dataResource);
+    PrestoDataSource prestoDataSource = new PrestoDataSource(dataResource);
 
-        System.out.println(prestoDataSource.queryForReportResult("SELECT * FROM ods_category LIMIT 10"));
-    }
+    System.out.println(
+        prestoDataSource.queryForReportResult("SELECT * FROM ods_category LIMIT 10"));
+  }
 }

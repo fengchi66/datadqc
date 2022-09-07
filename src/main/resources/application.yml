@@ -4,26 +4,20 @@ spring:
     password: MysqlDev2020^ddd1dad
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://rm-uf66387h69xbq0heq.mysql.rds.aliyuncs.com:3306/datadqc?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+  application:
+    name: PrometheusApp
 
 server:
   port: 8080
 
 management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' # 开启所有Actuator服务
   metrics:
-    enable:
-      all: false
     export:
       prometheus:
         enabled: true
     tags:
-      label-1-name: hello
-      label-2-name: world
-  endpoint:
-    metrics:
-      enabled: true
-    prometheus:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: [ "prometheus","health" ]
+      application: ${spring.application.name}
